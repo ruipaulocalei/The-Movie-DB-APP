@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Spoonacular',
+        title: 'Movie DB APP',
         debugShowCheckedModeBanner: false,
         initialRoute: '.',
         routes: {'/': (_) => HomePage()});
