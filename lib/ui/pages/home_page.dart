@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:spoonacular_api_app/state/state_manager.dart';
 import 'package:spoonacular_api_app/ui/pages/widgets/top_rated.dart';
 
 class HomePage extends ConsumerWidget {
