@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spoonacular_api_app/ui/pages/widgets/top_rated.dart';
+import 'package:spoonacular_api_app/ui/search/search_delegate.dart';
 
 class HomePage extends ConsumerWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,7 +21,9 @@ class HomePage extends ConsumerWidget {
           floating: true,
           actions: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showSearch(context: context, delegate: MovieSearch());
+              },
               icon: Icon(
                 Icons.search,
                 color: Colors.white,
