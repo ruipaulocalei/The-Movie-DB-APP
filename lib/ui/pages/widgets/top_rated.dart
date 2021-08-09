@@ -14,38 +14,65 @@ class TopRated extends ConsumerWidget {
     return movies.when(
       data: (movies) {
         return Container(
-          height: size.height * 0.30,
-          color: Colors.grey,
-          child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              physics: BouncingScrollPhysics(),
-              itemCount: movies.length,
-              itemBuilder: (_, i) {
-                return FadeInUp(
-                  delay: Duration(milliseconds: 400),
-                  child: Card(
-                    elevation: 8,
-                    child: Container(
-                        height: double.infinity,
-                        width: size.width * 0.3,
-                        child: Stack(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(5),
-                              child: CachedNetworkImage(
-                                imageUrl:
-                                    'https://image.tmdb.org/t/p/w500/${movies[i].posterPath}',
-                                height: double.infinity,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
-                              ),
-                            )
-                          ],
-                        )),
-                  ),
-                );
-              }),
-        );
+            height: size.height * 0.30,
+            color: Colors.grey,
+            child: NotificationListener<ScrollNotification>(
+              onNotification: (scrollNotification) {
+                if (scrollNotification.metrics.extentBefore ==
+                    scrollNotification.metrics.maxScrollExtent) {
+                  return true;
+                }
+                return false;
+              },
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  physics: BouncingScrollPhysics(),
+                  itemCount: movies.length,
+                  itemBuilder: (_, i) {
+                    return FadeInUp(
+                      delay: Duration(milliseconds: 400),
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: Card(
+                          elevation: 8,
+                          child: Container(
+                              height: double.infinity,
+                              width: size.width * 0.3,
+                              child: Stack(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(5),
+                                    child: CachedNetworkImage(
+                                      imageUrl: movies[i].posterPath != null
+                                          ? 'https://image.tmdb.org/t/p/w500/${movies[i].posterPath}'
+                                          : 'https://st4.depositphotos.com/14953852/22772/v/600/depositphotos_227725020-stock-illustration-image-available-icon-flat-vector.jpg',
+                                      height: double.infinity,
+                                      width: double.infinity,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.bottomCenter,
+                                    child: Positioned(
+                                      bottom: 20,
+                                      child: Text(
+                                        '${movies[i].title}',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                ],
+                              )),
+                        ),
+                      ),
+                    );
+                  }),
+            ));
       },
       loading: () => const Center(
         child: CircularProgressIndicator(),
