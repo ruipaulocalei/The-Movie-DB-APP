@@ -18,15 +18,25 @@ Results parseMovie(String responseData) {
 }
 
 Future<List<Results>> getMovies() async {
-  _topRatedPage++;
   final response = await dio().get('/top_rated', queryParameters: {
     'api_key': API_KEY,
     'language': 'pt-PT',
-    'page': _topRatedPage,
   });
   if (response.statusCode == 200) {
     return compute(parseMovies, response.data.toString());
   } else {
     throw Exception('Cannot get movies');
+  }
+}
+
+Future<Results> getMovie(id) async {
+  final response = await dio().get('/$id}', queryParameters: {
+    'api_key': API_KEY,
+    'language': 'pt-PT',
+  });
+  if (response.statusCode == 200) {
+    return compute(parseMovie, response.data.toString());
+  } else {
+    throw Exception('Cannot get movie');
   }
 }

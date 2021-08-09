@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,7 +34,9 @@ class TopRated extends ConsumerWidget {
                     return FadeInUp(
                       delay: Duration(milliseconds: 400),
                       child: GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          log('Id do filme ${movies[i].id}');
+                        },
                         child: Card(
                           elevation: 8,
                           child: Container(
