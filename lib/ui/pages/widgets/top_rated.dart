@@ -35,7 +35,8 @@ class TopRated extends ConsumerWidget {
                       delay: Duration(milliseconds: 400),
                       child: GestureDetector(
                         onTap: () {
-                          log('Id do filme ${movies[i].id}');
+                          context.read(movieSelected).state = movies[i];
+                          Navigator.of(context).pushNamed('/detail');
                         },
                         child: Card(
                           elevation: 8,
