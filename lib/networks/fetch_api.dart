@@ -18,7 +18,7 @@ MovieDetail parseMovie(String responseData) {
 }
 
 Future<List<Results>> getMovies() async {
-  final response = await dio().get('/top_rated', queryParameters: {
+  final response = await dio().get('movie/top_rated', queryParameters: {
     'api_key': API_KEY,
     'language': 'pt-PT',
   });
@@ -30,7 +30,7 @@ Future<List<Results>> getMovies() async {
 }
 
 Future<MovieDetail> getMovie(id) async {
-  final response = await dio().get('/$id}', queryParameters: {
+  final response = await dio().get('movie/$id}', queryParameters: {
     'api_key': API_KEY,
     'language': 'pt-PT',
   });
