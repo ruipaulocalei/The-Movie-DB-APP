@@ -11,10 +11,22 @@ class HomePage extends ConsumerWidget {
         body: CustomScrollView(
       slivers: [
         SliverAppBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.purple,
           brightness: Brightness.dark,
-          title: Text('Movie DB'),
+          title: Text(
+            'Movie DB',
+            style: TextStyle(color: Colors.white),
+          ),
           floating: true,
+          actions: [
+            IconButton(
+              onPressed: () {},
+              icon: Icon(
+                Icons.search,
+                color: Colors.white,
+              ),
+            ),
+          ],
         ),
         SliverPadding(
           padding: EdgeInsets.fromLTRB(0, 5, 0, 8),
