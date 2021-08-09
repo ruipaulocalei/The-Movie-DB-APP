@@ -11,6 +11,12 @@ List<Results> parseMovies(String responseData) {
   return movies;
 }
 
+Results parseMovie(String responseData) {
+  var m = jsonDecode(responseData)['results'] as dynamic;
+  var movie = Results.fromJson(m);
+  return movie;
+}
+
 Future<List<Results>> getMovies() async {
   _topRatedPage++;
   final response = await dio().get('/top_rated', queryParameters: {
