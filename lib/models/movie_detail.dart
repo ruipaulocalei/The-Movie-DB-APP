@@ -25,7 +25,7 @@ class MovieDetail {
       this.backdropPath,
       this.budget,
       this.homepage,
-      required this.id,
+      this.id,
       this.imdbId,
       this.originalLanguage,
       this.originalTitle,

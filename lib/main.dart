@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         initialRoute: '.',
         routes: {
           '/': (_) => HomePage(),
-          '/detail': (_) => MovieDetail(),
+          '/detail': (_) => MovieDetailPage(),
         });
   }
 }

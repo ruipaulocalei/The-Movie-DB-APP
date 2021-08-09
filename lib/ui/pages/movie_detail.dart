@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spoonacular_api_app/state/state_manager.dart';
 
-class MovieDetail extends ConsumerWidget {
-  const MovieDetail({Key? key}) : super(key: key);
+class MovieDetailPage extends ConsumerWidget {
+  const MovieDetailPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {

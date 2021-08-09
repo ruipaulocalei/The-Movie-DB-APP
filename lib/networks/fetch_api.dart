@@ -1,19 +1,19 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:spoonacular_api_app/api_key.dart';
+import 'package:spoonacular_api_app/models/movie_detail.dart';
 import 'package:spoonacular_api_app/models/results.dart';
 import 'package:spoonacular_api_app/networks/dio.dart';
 
-int _topRatedPage = 1;
 List<Results> parseMovies(String responseData) {
   var l = json.decode(responseData)['results'] as List<dynamic>;
   var movies = l.map((m) => Results.fromJson(m)).toList();
   return movies;
 }
 
-Results parseMovie(String responseData) {
-  var m = jsonDecode(responseData)['results'] as dynamic;
-  var movie = Results.fromJson(m);
+MovieDetail parseMovie(String responseData) {
+  var m = jsonDecode(responseData) as dynamic;
+  var movie = MovieDetail.fromJson(m);
   return movie;
 }
 
@@ -29,7 +29,7 @@ Future<List<Results>> getMovies() async {
   }
 }
 
-Future<Results> getMovie(id) async {
+Future<MovieDetail> getMovie(id) async {
   final response = await dio().get('/$id}', queryParameters: {
     'api_key': API_KEY,
     'language': 'pt-PT',
