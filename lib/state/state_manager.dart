@@ -3,3 +3,5 @@ import 'package:spoonacular_api_app/models/results.dart';
 import 'package:spoonacular_api_app/networks/fetch_api.dart';
 
 final moviesProvider = FutureProvider<List<Results>>((ref) => getMovies());
+
+final movieProvider = FutureProvider.family((ref, id) => getMovie(id));
