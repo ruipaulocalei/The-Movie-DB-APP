@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:spoonacular_api_app/ui/pages/movie_detail.dart';
 
 import 'ui/pages/home_page.dart';
 
@@ -15,6 +16,9 @@ class MyApp extends StatelessWidget {
         title: 'Movie DB APP',
         debugShowCheckedModeBanner: false,
         initialRoute: '.',
-        routes: {'/': (_) => HomePage()});
+        routes: {
+          '/': (_) => HomePage(),
+          '/detail': (_) => MovieDetail(),
+        });
   }
 }
