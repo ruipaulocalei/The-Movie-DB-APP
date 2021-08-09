@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:spoonacular_api_app/state/state_manager.dart';
@@ -21,6 +22,43 @@ class MovieDetailPage extends ConsumerWidget {
                       flexibleSpace: FlexibleSpaceBar(
                         centerTitle: true,
                         title: Text('${m.title}'),
+                        background: CachedNetworkImage(
+                          imageUrl:
+                              'https://image.tmdb.org/t/p/w500/${m.posterPath}',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    SliverPadding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 15),
+                      sliver: SliverList(
+                        delegate: SliverChildListDelegate(
+                          [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  '${m.title}',
+                                  style: TextStyle(fontSize: 20),
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.star),
+                                    Text('${m.voteAverage}'),
+                                  ],
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.only(top: 18),
+                                  child: Text(
+                                    '${m.overview}',
+                                    textAlign: TextAlign.justify,
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
                       ),
                     )
                   ],
